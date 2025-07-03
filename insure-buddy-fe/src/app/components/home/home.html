@@ -1,0 +1,15 @@
+<div class="chat-container">
+    <div class="chat-messages">
+      <div *ngFor="let msg of messages" [ngClass]="msg.from">
+        <div class="chat-bubble">{{ msg.text }}</div>
+      </div>
+    </div>
+    <form class="chat-input-row" (submit)="$event.preventDefault(); sendMessage();">
+      <input type="file" accept="application/pdf" id="pdf-upload" hidden (change)="onPdfSelected($event)">
+      <button type="button" class="upload-btn" (click)="triggerPdfUpload()">
+        <span>📎</span>
+      </button>
+      <input type="text" class="chat-input" placeholder="Type your message..." [(ngModel)]="message" name="message" autocomplete="off">
+      <button type="submit" class="send-btn">Send</button>
+    </form>
+  </div> 
